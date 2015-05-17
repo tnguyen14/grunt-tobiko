@@ -9,7 +9,8 @@ function parseEndpoint(posts, endpoint) {
 		posts: posts.reduce(function (_posts, p) {
 			_posts[p.slug] = {
 				'index': {
-					date: p.modified,
+					date: p.date,
+					updated: p.modified,
 					template: endpoint.template,
 					title: p.title,
 					main: p.content,
