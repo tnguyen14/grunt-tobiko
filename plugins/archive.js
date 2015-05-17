@@ -97,7 +97,7 @@ function paginate(dir, dirName, options) {
 	}
 
 	// make the first page of archive available at top level
-	archive.index = _.cloneDeep(archive['1'].index;
+	archive.index = _.cloneDeep(archive['1'].index);
 	archive.index.filepath = path.join(dirName, 'index.html');
 	archive.index.url = path.join('/', dirName);
 
