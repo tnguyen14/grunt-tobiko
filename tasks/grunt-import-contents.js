@@ -52,13 +52,18 @@ module.exports = function (grunt) {
 				// start at the top of the content tree
 				var currentDir = contentTree;
 				// iterate through the directory path
-				for (var obj in directories) {
+				for (var d in directories) {
+					var dirName = directories[d];
+					// skip the first level
+					if (dirName === '.') {
+						continue;
+					}
 					// if the directory doesn't exist yet, create an empty object in the content tree
-					if (!currentDir[directories[obj]]) {
-						currentDir = currentDir[directories[obj]] = {};
+					if (!currentDir[dirName]) {
+						currentDir = currentDir[dirName] = {};
 					// if the directory already exists, move into a deeper level
 					} else {
-						currentDir = currentDir[directories[obj]];
+						currentDir = currentDir[dirName];
 					}
 				}
 				// once the deepest directory level is reached, put new content on the Content Tree

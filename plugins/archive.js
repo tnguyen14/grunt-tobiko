@@ -68,7 +68,7 @@ function paginate(dir, dirName, options) {
 	// set up each archive page
 	for (var pageNum = 1; pageNum <= numPages; pageNum++) {
 		archive[pageNum] = {};
-		var archivePage = archive[pageNum]['index.html'] = {};
+		var archivePage = archive[pageNum].index = {};
 		// add template so it gets rendered
 		archivePage.template = options.template;
 		// a title as well
@@ -92,14 +92,14 @@ function paginate(dir, dirName, options) {
 	var pNum, page;
 	for (var i = 0; i < posts.length; i++) {
 		pNum = Math.floor(i/ options.postsPerPage) + 1;
-		page = archive[pNum]['index.html'];
+		page = archive[pNum].index;
 		page.posts.push(posts[i]);
 	}
 
 	// make the first page of archive available at top level
-	archive['index.html'] = _.cloneDeep(archive['1']['index.html']);
-	archive['index.html'].filepath = path.join(dirName, 'index.html');
-	archive['index.html'].url = path.join('/', dirName);
+	archive.index = _.cloneDeep(archive['1'].index;
+	archive.index.filepath = path.join(dirName, 'index.html');
+	archive.index.url = path.join('/', dirName);
 
 	return archive;
 }
