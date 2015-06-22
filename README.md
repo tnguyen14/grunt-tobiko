@@ -1,6 +1,8 @@
 # tobiko
 > a grunt plugin that powers the tobiko static site generator
 
+[![NPM](https://nodei.co/npm/grunt-tobiko.png)](https://nodei.co/npm/grunt-tobiko/)
+
 This project is known on npm as [grunt-tobiko](https://npmjs.org/package/grunt-tobiko). It is named tobiko here for legacy reason.
 
 ## How to use
