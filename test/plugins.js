@@ -24,7 +24,7 @@ var archivePosts = {
 	}
 };
 var archiveOption = {
-	postPerPage: 2,
+	postsPerPage: 2,
 	template: 'archive.hbs',
 	title: 'Posts',
 	orderby: 'order'
@@ -49,8 +49,9 @@ test('Generate archive pages', function(t) {
 	t.plan(1);
 	var archivePages = archive.paginate(archivePosts, 'posts', archiveOption);
 	t.deepEqual(archivePages, {
-		'index.html': {
+		index: {
 			filepath: 'posts/index.html',
+			filename: 'index',
 			url: '/posts',
 			template: archiveOption.template,
 			title: archiveOption.title,
@@ -64,9 +65,10 @@ test('Generate archive pages', function(t) {
 			}]
 		},
 		1: {
-			'index.html': {
-				filepath: 'posts/index.html',
-				url: '/posts',
+			index: {
+				filepath: 'posts/1/index.html',
+				filename: 'index',
+				url: '/posts/1',
 				template: archiveOption.template,
 				title: archiveOption.title,
 				prevUrl: '/posts/2',
@@ -80,8 +82,9 @@ test('Generate archive pages', function(t) {
 			}
 		},
 		2: {
-			'index.html': {
+			index: {
 				filepath: 'posts/2/index.html',
+				filename: 'index',
 				url: '/posts/2',
 				template: archiveOption.template,
 				title: archiveOption.title,
