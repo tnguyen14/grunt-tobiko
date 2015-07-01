@@ -38,8 +38,6 @@ You can also deploy it to Github pages. Other [methods of deployment](#deploymen
 - Styles: SCSS
 - JavaScript: RequireJS (AMD)
 
-There are plans to support browserify (CommonJS) and a gulp build system in the future.
-
 ## Project configurations
 Below are the default configuations used by the static site generator and they can be configured easily. When using generator-tobiko, you will be prompted to enter these values.
 
@@ -130,7 +128,7 @@ Each page specifies a template that it uses, either as a JSON property or YAML f
 
 Example:
 
-main.json
+index.json
 ```js
 {
   template: "index.hbs",
@@ -148,15 +146,16 @@ Hello World
 
 #### filepath
 By default, the path of the page is its directory structure.
-For example, the page `contents/articles/06/a-new-day.json` will have the URL `http://localhost/articles/06/a-new-day.json`.
+For example, the page `contents/articles/06/a-new-day.json` will have the URL `http://your-website.com/articles/06/a-new-day.html`.
 
 However, each page's path can be overwritten by a `filepath` property.
-Example:
+Example, the file above can have the following property,
 ```js
 {
-  filepath: "articles/archives/some-post.md"
+  filepath: "articles/a-new-day.json"
 }
 ```
+which will give it a URL `http://your-website.com/articles/a-new-day.html`.
 
 This could be useful as a way to order files in a directory structure.
 In the cars example above:
@@ -173,7 +172,7 @@ contents
         └── spoiler.json
 ```
 
-In order to avoid the number 1, 2, 3 etc. appear in these car's URL, they could have a custom `filepath` property, such as `contents/cars/tesla.json`.
+In order to avoid the number 1, 2, 3 etc. appear in these cars' URLs, they could have a custom `filepath` property, such as `cars/tesla.json`.
 
 #### date
 Post or page date is supported by declaring property `date` in JSON or YAML. Any [ISO-8601 string formats](http://momentjs.com/docs/#/parsing/string/) for date is supported.
@@ -198,43 +197,61 @@ Each page needs to specify its own template. This can be done with a JSON proper
 ```
 or in the YAML frontmatter. A file with no `template` property will not be rendered.
 
-A file's content is available in the template under the `content` variable. Other sub-directories included in the same directory is accessible in the template with [nesting](#nesting).
+#### Context
+Each template will be passed in a context object generated from the content file with the following properties:
+- `content`: the content file
+- `content.main`: the parsed HTML if the content file is a markdown file
+- `content.filename`: name of the content file
+- `content.fileext`: extension type of the content file
+- `content.url`: url of the page
+- `config`: see [config](#config.json)
+- Other sub-directories included in the same directory is accessible in the template with [nesting](#nesting).
+
+### Plugins
+Tobiko can be extended with plugins. By default, it comes with 2 plugins:
+
+#### WordPress
+While static site can be a great way to publish content, managing them using the file system can feel clunky at times. It is not too friendly for non-developers. As such, tobiko allows you to pull in content from WordPress, one of the most popular content management systems. With [WP REST API](http://wp-api.org/), content from WordPress can be exported to a system like tobiko.
+
+After installing the WP API plugin, you can start using it in tobiko by configuring it with `options` under the `import_contents` task. For example:
+
+```js
+  wordpress: {
+      apiRoot: 'http://your-wordpress-url.com/wp-json',
+      contents: [{
+        postType: 'posts',
+        folder: 'articles',
+        template: 'article.hbs'
+      }]
+    }
+```
+
+The `folder` key defines where the WordPress content is put on the content tree.
 
 #### Archives and Pagination
 A directory with a big number of posts could be configured to paginate. The paginated pages are called archives.
-The option for enabling pagination can be added in `tobiko.json`. For example:
+The option for enabling archives can be added to `options` under the `import_contents` task. For example:
+
 ```js
-  "archives": {
-    "posts": {
-      "postsPerPage": 4,
-      "template": "archive.hbs",
-      "title": "Posts"
+  archives: {
+    articles: {
+      postsPerPage: 4,
+      template: 'articleArchive.hbs',
+      title: 'Articles'
     }
   }
 ```
-Each option in the `paginate` object represents a directory to be paginated. The key of each option is the directory name of the content to be paginated.
-Each archive can have the following options:
+
+Each key in the `archives` object represents the name of the directory to be paginated.
+Each value can have the following options:
 * `orderby`: (string) how to order the posts in the archives. Default to ['date'](#date)
 * `postsPerPage`: (number) number of posts to be displayed per archive page
 * `template`: (string) the template used to display these archive pages
 * `title`: (string) title of these archive pages (this will be made available to use in template as `content.title`)
 
-#### Template
-The `posts` in each archive page is accessible in the template file under `content` property, similar to a regular file. See [example](https://github.com/tnguyen14/tobiko-example/blob/master/example/templates/archive.hbs).
+The paginated content in each archive page is accessible in the template file under `content.posts`.
 
-### Grunt tasks
-Thanks to [grunt-load-config](https://github.com/firstandthird/load-grunt-config/), the grunt task configs are neatly organized under the [`config`](https://github.com/tnguyen14/tobiko/tree/master/config) directory.
-
-A few [tasks](https://github.com/tnguyen14/tobiko/blob/master/config/aliases.yaml) are made available below. The default is `dev`.
-1. `dev`: Running `grunt dev` does a few things:
-- processing the contents and build out the templates
-- minify images and create different resolutions of the same image for responsive use
-- compile sass and prefix it if necessary
-- create a connect server to render to content locally
-- [watch](https://github.com/tnguyen14/tobiko/blob/master/config/watch.js) for changes
-
-2. `build`: Running `grunt build` will prepare all the content (parse, build templates, create responsive images, mininfy them, compile sass and minify css) for deployment.
-3. `deploy`: `build` and deploy with `gh-pages`. See [deployment](#deployment) guide below.
+*The `archives` plugin can be used in combination with the `wordpress` plugin to paginate WordPress content.*
 
 ### Deployment
 The site can be deployed by default to [Github Pages](http://pages.github.com) using the [`grunt-gh-pages`](https://github.com/tschaub/grunt-gh-pages) task (more options can be found on that plugin page).
