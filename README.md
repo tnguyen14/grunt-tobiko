@@ -6,50 +6,16 @@
 > a grunt plugin that powers the tobiko static site generator
 
 ## How to use
-This is a grunt plugin that powers a static site generator. You can use the static site generator to power your website or blog using [generator-tobiko](http://github.com/tnguyen14/generator-tobiko).
+This is a grunt plugin that powers a static site generator. 
 
-1. To get started, install [yeoman](http://yeoman.io) and the generator plugin.
-    ```sh
-    $ npm install -g yo generator-tobiko
-    ```
-
-2. Start to scaffold your new website
-    ```sh
-    $ mkdir newsite
-    $ cd newsite
-    $ yo tobiko
-    ```
-
-3. Answer the prompt and create your new site. Even though the generator is designed to be as flexible as possible, if you are using this for the first time, sticking to the default configs will make the most sense. All the examples and documentation are written based on that structure. See [project configurations](#project-configurations).
-
-4. Start developing it locally
-    ```sh
-    $ grunt
-    ```
-You can also deploy it to Github pages. Other [methods of deployment](#deployment) are also available.
-    ```sh
-    $ grunt deploy
-    ```
+See [tobiko-example](https://github.com/tnguyen14/tobiko-example) for sample implementations of tobiko.
 
 ## Stack
 - Build process: grunt
 - Content: JSON / Markdown (optionally with YAML frontmatter)
 - Template: Handlebars
 - Styles: SCSS
-- JavaScript: RequireJS (AMD)
-
-## Project configurations
-Below are the default configuations used by the static site generator and they can be configured easily. When using generator-tobiko, you will be prompted to enter these values.
-
-- Contents directory: `contents`
-- Template directory: `templates`
-  - Partial directory: `templates/partials`
-  - Helper directory: `templates/helpers`
-- Sass directory: `scss`
-- JavaScript directory: `js`
-- Build directory: `build`
-- localhost port: `4000`
-- livereload port: `35730`
+- JavaScript: browserify (but it can really be anything - see [tobiko-example](https://github.com/tnguyen14/tobiko-example)) 
 
 ## Documentation
 
