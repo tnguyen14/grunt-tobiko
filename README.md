@@ -1,10 +1,9 @@
 # tobiko
-> a grunt plugin that powers the tobiko static site generator
 
 [![Build Status](https://secure.travis-ci.org/tnguyen14/tobiko.png?branch=master)](https://travis-ci.org/tnguyen14/tobiko)
 [![NPM](https://nodei.co/npm/grunt-tobiko.png)](https://nodei.co/npm/grunt-tobiko/)
 
-This project is known on npm as [grunt-tobiko](https://npmjs.org/package/grunt-tobiko). It is named tobiko here for legacy reason.
+> a grunt plugin that powers the tobiko static site generator
 
 ## How to use
 This is a grunt plugin that powers a static site generator. You can use the static site generator to power your website or blog using [generator-tobiko](http://github.com/tnguyen14/generator-tobiko).
