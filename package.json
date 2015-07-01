@@ -16,6 +16,7 @@
   "engines": {
     "node": ">= 0.12.2"
   },
+  "license": "ISC",
   "dependencies": {
     "handlebars": "^3.0.3",
     "js-yaml": "^3.2.2",
