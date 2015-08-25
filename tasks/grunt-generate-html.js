@@ -55,6 +55,8 @@ module.exports = function (grunt) {
 							// put the file content on the context
 							context.content = content;
 							context.config = config;
+							// make all data available on the global context key
+							context.global = data;
 							html = templates[content.template](context);
 
 							// remove the dot in dirname

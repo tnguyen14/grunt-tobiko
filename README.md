@@ -6,7 +6,7 @@
 > a grunt plugin that powers the tobiko static site generator
 
 ## How to use
-This is a grunt plugin that powers a static site generator. 
+This is a grunt plugin that powers a static site generator.
 
 See [tobiko-example](https://github.com/tnguyen14/tobiko-example) for sample implementations of tobiko.
 
@@ -15,7 +15,7 @@ See [tobiko-example](https://github.com/tnguyen14/tobiko-example) for sample imp
 - Content: JSON / Markdown (optionally with YAML frontmatter)
 - Template: Handlebars
 - Styles: SCSS
-- JavaScript: browserify (but it can really be anything - see [tobiko-example](https://github.com/tnguyen14/tobiko-example)) 
+- JavaScript: browserify (but it can really be anything - see [tobiko-example](https://github.com/tnguyen14/tobiko-example))
 
 ## Documentation
 
@@ -171,6 +171,7 @@ Each template will be passed in a context object generated from the content file
 - `content.fileext`: extension type of the content file
 - `content.url`: url of the page
 - `config`: see [config](#config.json)
+- `global`: all data in the `contents` directory
 - Other sub-directories included in the same directory is accessible in the template with [nesting](#nesting).
 
 ### Plugins
