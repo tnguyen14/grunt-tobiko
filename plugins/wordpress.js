@@ -12,8 +12,8 @@ function parseEndpoint(posts, endpoint) {
 					date: p.date,
 					updated: p.modified,
 					template: endpoint.template,
-					title: p.title,
-					main: p.content,
+					title: p.title.rendered,
+					main: p.content.rendered,
 					slug: p.slug,
 					filepath: endpoint.folder + '/' + p.slug + '/index',
 					filename: 'index'

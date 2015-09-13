@@ -178,13 +178,13 @@ Each template will be passed in a context object generated from the content file
 Tobiko can be extended with plugins. By default, it comes with 2 plugins:
 
 #### WordPress
-While static site can be a great way to publish content, managing them using the file system can feel clunky at times. It is not too friendly for non-developers. As such, tobiko allows you to pull in content from WordPress, one of the most popular content management systems. With [WP REST API](http://wp-api.org/), content from WordPress can be exported to a system like tobiko.
+While static site can be a great way to publish content, managing them using the file system can feel clunky at times. It is not too friendly for non-developers. As such, tobiko allows you to pull in content from WordPress, one of the most popular content management systems. With [WP REST API](http://v2.wp-api.org/), content from WordPress can be exported to a system like tobiko.
 
 After installing the WP API plugin, you can start using it in tobiko by configuring it with `options` under the `import_contents` task. For example:
 
 ```js
   wordpress: {
-      apiRoot: 'http://your-wordpress-url.com/wp-json',
+      apiRoot: 'http://your-wordpress-url.com/wp-json/wp/v2',
       contents: [{
         postType: 'posts',
         folder: 'articles',
