@@ -12,7 +12,7 @@
     "tobiko",
     "grunt"
   ],
-  "repository": "tnguyen14/tobiko",
+  "repository": "tnguyen14/grunt-tobiko",
   "engines": {
     "node": ">= 0.12.2"
   },

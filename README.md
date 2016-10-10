@@ -1,6 +1,6 @@
 # tobiko
 
-[![Build Status](https://secure.travis-ci.org/tnguyen14/tobiko.png?branch=master)](https://travis-ci.org/tnguyen14/tobiko)
+[![Build Status](https://secure.travis-ci.org/tnguyen14/grunt-tobiko.png?branch=master)](https://travis-ci.org/tnguyen14/grunt-tobiko)
 [![NPM](https://nodei.co/npm/grunt-tobiko.png)](https://nodei.co/npm/grunt-tobiko/)
 
 > a grunt plugin that powers the tobiko static site generator
