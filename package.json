@@ -18,16 +18,16 @@
   },
   "license": "ISC",
   "dependencies": {
-    "handlebars": "^3.0.3",
+    "handlebars": "^4.0.8",
     "js-yaml": "^3.2.2",
-    "lodash": "^3.8.0",
+    "lodash": "^4.17.4",
     "marked": "^0.3.2",
     "moment": "^2.8.3",
-    "superagent": "^1.2.0"
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "faucet": "0.0.1",
-    "grunt": "^0.4.5",
+    "grunt": "^1.0.1",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0"
   },
