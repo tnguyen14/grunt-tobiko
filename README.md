@@ -1,5 +1,7 @@
 # tobiko
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tnguyen14/grunt-tobiko.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://secure.travis-ci.org/tnguyen14/grunt-tobiko.png?branch=master)](https://travis-ci.org/tnguyen14/grunt-tobiko)
 [![NPM](https://nodei.co/npm/grunt-tobiko.png)](https://nodei.co/npm/grunt-tobiko/)
 
